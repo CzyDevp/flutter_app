@@ -37,6 +37,7 @@ class _ImageState extends State<ImageView>{
   }
   @override
   void initState() {
-    imagePicker();
+    super.initState();
+        imagePicker();
   }
 }
