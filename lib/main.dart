@@ -1,11 +1,9 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/SecondActvity.dart';
 import 'package:http/http.dart' as http;
-import 'package:image_picker/image_picker.dart';
-
+import 'package:flutter_app/ImageView.dart';
 void main() => runApp(new MyApp());
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -44,7 +42,6 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => new _MyHomePageState();
 }
 class _MyHomePageState extends State<MyHomePage> {
-  File image;
   List data;
   String apiUrl = 'https://randomuser.me/api/?results=15';
   int _counter = 0;
@@ -57,17 +54,6 @@ class _MyHomePageState extends State<MyHomePage> {
       // called again, and so nothing would appear to happen.
       _counter++;
     });
-  }
-  //access image from camera or gallery
-  Future imagePicker()async {
-    File img =  await ImagePicker.pickImage(source: ImageSource.camera); //get image via camera
-    //File img = await ImagePicker.pickVideo(source: ImageSource.gallery); //get acces to gallery
-    if (img != null) {
-      image = img;
-      print(image.path);
-      setState(() {});
-    }
-
   }
   //to make http request and get result as Json
   Future<String>makeRequest() async{
@@ -128,9 +114,14 @@ class _MyHomePageState extends State<MyHomePage> {
         },
       ),
        floatingActionButton: new FloatingActionButton(
-           onPressed: imagePicker,
-           child: new Icon(Icons.camera_alt),
-      /*body: new Center(
+           onPressed: (){
+                         Navigator.push(context,
+                                        new MaterialPageRoute(
+                                        builder: (BuildContext context) => new ImageView()),
+       );
+       },
+       child: new Icon(Icons.camera_alt),
+       /*body: new Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
         child: new Column(

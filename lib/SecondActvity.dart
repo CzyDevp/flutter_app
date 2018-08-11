@@ -5,7 +5,7 @@ class SecondPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) => new Scaffold(
     appBar: new AppBar(
-      title: new Text("SecondPage"),
+      title: new Text("Image Detailed"),
     ),
     body: new Center(
       child: new Container(
