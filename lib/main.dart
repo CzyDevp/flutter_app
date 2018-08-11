@@ -44,8 +44,8 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   List data;
   String apiUrl = 'https://randomuser.me/api/?results=15';
-  int _counter = 0;
-  void _incrementCounter() {
+  //int _counter = 0;
+  /*void _incrementCounter() {
     setState(() {
       // This call to setState tells the Flutter framework that something has
       // changed in this State, which causes it to rerun the build method below
@@ -54,14 +54,14 @@ class _MyHomePageState extends State<MyHomePage> {
       // called again, and so nothing would appear to happen.
       _counter++;
     });
-  }
+  }*/
   //to make http request and get result as Json
-  Future<String>makeRequest() async{
+  Future<void>makeRequest() async{
     var response = await http.get(
     Uri.encodeFull(apiUrl),
     headers: {'Accept': 'application/json'});
     this.setState((){
-      var extractData = JSON.decode(response.body);
+      var extractData = jsonDecode(response.body);  //JSON Deprecated
       data = extractData["results"];
     });
   }
