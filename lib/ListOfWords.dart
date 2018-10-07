@@ -9,9 +9,9 @@ class ListOfWords extends StatelessWidget {
         primaryColor: Colors.white,
       ),
       home: new Scaffold(
-        appBar: new AppBar(
+        /*appBar: new AppBar(
           title: new Text('Random Words'),
-        ),
+        ),*/
         body: new Center(
           child: new RandomWords(),
         ),
